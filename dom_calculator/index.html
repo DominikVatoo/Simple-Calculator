@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1e1e1e;
+      color: #ffffff;
+    }
+    .container {
+      margin-top: 50px;
+    }
+    .calculator {
+      background-color: #333333;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+    .btn {
+      color: #ffffff;
+      background-color: #4d4d4d;
+      border-color: #4d4d4d;
+      font-size: 24px;
+      padding: 20px;
+      width: 25%;
+      float: left;
+      transition: background-color 0.3s;
+    }
+    .btn:hover {
+      background-color: #666666;
+    }
+    .clear {
+      clear: both;
+    }
+    .credit {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center mb-4">Calculator</h1>
+    <div class="row justify-content-center">
+      <div class="col-md-6 calculator">
+        <input type="text" class="form-control mb-3" id="display" disabled>
+        <button class="btn" onclick="clearDisplay()">C</button>
+        <button class="btn" onclick="appendToDisplay('/')">/</button>
+        <button class="btn" onclick="appendToDisplay('*')">x</button>
+        <button class="btn" onclick="appendToDisplay('-')">-</button>
+        <button class="btn" onclick="appendToDisplay('7')">7</button>
+        <button class="btn" onclick="appendToDisplay('8')">8</button>
+        <button class="btn" onclick="appendToDisplay('9')">9</button>
+        <button class="btn" onclick="appendToDisplay('+')">+</button>
+        <button class="btn" onclick="appendToDisplay('4')">4</button>
+        <button class="btn" onclick="appendToDisplay('5')">5</button>
+        <button class="btn" onclick="appendToDisplay('6')">6</button>
+        <button class="btn" onclick="appendToDisplay('.')">.</button>
+        <button class="btn" onclick="appendToDisplay('1')">1</button>
+        <button class="btn" onclick="appendToDisplay('2')">2</button>
+        <button class="btn" onclick="appendToDisplay('3')">3</button>
+        <button class="btn" onclick="calculate()">=</button>
+        <button class="btn" onclick="appendToDisplay('0')">0</button>
+        <button class="btn" onclick="backspace()">←</button>
+        <div class="clear"></div>
+      </div>
+    </div>
+    <div class="credit">Developed with <span style="color: #ec1606;">&hearts;</span> by DominikVatoo for GitHub Skids</div>
+  </div>
+
+  <script>
+    function appendToDisplay(value) {
+      document.getElementById('display').value += value;
+    }
+
+    function clearDisplay() {
+      document.getElementById('display').value = '';
+    }
+
+    function backspace() {
+      const displayValue = document.getElementById('display').value;
+      document.getElementById('display').value = displayValue.slice(0, -1);
+    }
+
+    function calculate() {
+      const displayValue = document.getElementById('display').value;
+      const result = eval(displayValue);
+      document.getElementById('display').value = result;
+    }
+  </script>
+</body>
+</html>
